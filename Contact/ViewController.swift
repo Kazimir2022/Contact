@@ -22,17 +22,18 @@ extension ViewController:UITableViewDataSource {
         return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // производим попытку загрузки переиспользованной ячейки
+        var cell:UITableViewCell
         
-        
-        
-        guard var cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") else {
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "MyCell") {
+            print("используем старую ячейку для строки с индексом \(indexPath.row)")
+            cell = reuseCell
+            
+        } else {
+            
             print("Создаем новую ячейку для строки с индексом \(indexPath.row)")
-            var newCell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")
-            configure(cell: &newCell, for: indexPath)
-            return newCell
+            cell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")
         }
-        print("используем старую ячейку для строки с индексом \(indexPath.row)")
+           
         configure(cell: &cell, for: indexPath)
         return cell
         
