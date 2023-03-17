@@ -22,13 +22,27 @@ extension ViewController:UITableViewDataSource {
         return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // получаем экземляр ячейки
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)// инициализатор который возвращает ячейку на основе предустановленного стиля
-        // конфигурируем ячейку
-        var configuration = cell.defaultContentConfiguration()// создаем ячейку без данных
-        configuration.text = "Строка \(indexPath.row)"//наполняем ее данными
-        cell.contentConfiguration = configuration // наполненная конфигурация передается ячейке
-        // возвращаем сконфигурированный экземпляр ячейки
+        // производим попытку загрузки переиспользованной ячейки
+        
+        
+        
+        guard var cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") else {
+            print("Создаем новую ячейку для строки с индексом \(indexPath.row)")
+            var newCell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")
+            configure(cell: &newCell, for: indexPath)
+            return newCell
+        }
+        print("используем старую ячейку для строки с индексом \(indexPath.row)")
+        configure(cell: &cell, for: indexPath)
         return cell
+        
+    }
+   
+}
+extension ViewController{
+    private func configure(cell: inout UITableViewCell, for indexPath:IndexPath){
+        var configuration = cell.defaultContentConfiguration()
+        configuration.text = "строка \(indexPath.row)"
+        cell.contentConfiguration = configuration
     }
 }
