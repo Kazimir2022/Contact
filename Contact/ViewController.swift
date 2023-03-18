@@ -56,3 +56,12 @@ extension ViewController{
         cell.contentConfiguration = configuration
     }
 }
+extension ViewController:UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        print("Определяем доступные действия для строки \(indexPath.row)")
+        return nil
+    }
+    
+    
+}
