@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE38B04929C5AD3E007882DC /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38B04829C5AD3D007882DC /* Contact.swift */; };
 		FEC55D3929C48C6C001194B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC55D3829C48C6C001194B7 /* AppDelegate.swift */; };
 		FEC55D3B29C48C6C001194B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC55D3A29C48C6C001194B7 /* SceneDelegate.swift */; };
 		FEC55D3D29C48C6C001194B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC55D3C29C48C6C001194B7 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE38B04829C5AD3D007882DC /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		FEC55D3529C48C6C001194B7 /* Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC55D3829C48C6C001194B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEC55D3A29C48C6C001194B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE38B04629C5AC6B007882DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE38B04829C5AD3D007882DC /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FEC55D2C29C48C6C001194B7 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		FEC55D3729C48C6C001194B7 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				FE38B04629C5AC6B007882DC /* Model */,
 				FEC55D3829C48C6C001194B7 /* AppDelegate.swift */,
 				FEC55D3A29C48C6C001194B7 /* SceneDelegate.swift */,
 				FEC55D3C29C48C6C001194B7 /* ViewController.swift */,
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE38B04929C5AD3E007882DC /* Contact.swift in Sources */,
 				FEC55D3D29C48C6C001194B7 /* ViewController.swift in Sources */,
 				FEC55D3929C48C6C001194B7 /* AppDelegate.swift in Sources */,
 				FEC55D3B29C48C6C001194B7 /* SceneDelegate.swift in Sources */,
