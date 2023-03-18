@@ -59,9 +59,22 @@ extension ViewController{
 extension ViewController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        print("Определяем доступные действия для строки \(indexPath.row)")
-        return nil
+       let actionDelete = UIContextualAction(style: .destructive, title: "Удалить")
+        { _,_,_ in
+           // удаляем контакт
+           self.contacts.remove(at: indexPath.row)
+           // заново формируем табличное представление
+           tableView.reloadData()    }
+        // формируем экземпляр, описывающий доступные действия
+        let actionEdit = UIContextualAction(style: .normal, title: "Редактировать")
+        { _,_,_ in
+            
+            self.contacts.remove(at: indexPath.row)
+            // заново формируем табличное представление
+            tableView.reloadData()
+        }
+        let actions = UISwipeActionsConfiguration(actions: [actionEdit,actionDelete])
+        return actions
     }
-    
-    
+       
 }
