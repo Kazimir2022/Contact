@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var userDefaults = UserDefaults.standard
     private var contacts = [ContactProtocol](){// массив экземпляров
         didSet {
             contacts.sort{ $0.title < $1.title }
@@ -21,6 +22,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        print( userDefaults.object(forKey: "Some key") )
+        print( userDefaults.string(forKey: "Some key") )
         loadContacts()
     }
     private func loadContacts() {
