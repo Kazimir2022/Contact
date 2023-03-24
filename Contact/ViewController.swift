@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private var contacts = [ContactProtocol](){
+    private var contacts = [ContactProtocol](){// массив экземпляров
         didSet {
             contacts.sort{ $0.title < $1.title }
          
@@ -29,10 +29,14 @@ class ViewController: UIViewController {
         contacts.append(Contact(title: "Сильвестр", phone: "+7000911112"))
         
     }
+    
     @IBAction func showNewContactAlert() {
+        
         // создание Alert Controller
               let alertController = UIAlertController(title: "Создайте новый контакт", message: "Введите имя и телефон", preferredStyle: .alert)
-              
+        
+      
+       
               // добавляем первое текстовое поле в Alert Controller
               alertController.addTextField(){ textfield in
                   textfield.placeholder = "Имя"
@@ -42,19 +46,18 @@ class ViewController: UIViewController {
               alertController.addTextField(){ textfield in
                   textfield.placeholder = "Номер телефона"
               }
-        
-              // создаем кнопки
+          // создаем кнопки
               // кнопка создания контакта
               let createButton = UIAlertAction(title: "Создать", style: .default, handler: { _ in
                   guard let contactName = alertController.textFields?[0].text,
                         let contactPhone = alertController.textFields?[1].text else {
-                      return
+                      return // если не получилось -  выходим из метода
                   }
                   
-                  // создаем новый контакт
+                  // создаем новый контакт(если значения текстовых полей получены)
                   let contact = Contact(title: contactName, phone: contactPhone)
                   self.contacts.append(contact)
-                  self.tableView.reloadData()
+                  self.tableView.reloadData()// заново формируем табличное представление
               })
               
               // кнопка отмены
