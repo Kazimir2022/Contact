@@ -41,11 +41,12 @@ class ContactStorage: ContactStorageProtocol  {
     func load() -> [ContactProtocol] {
         var resultContacts: [ContactProtocol] = []
         let contactsFromStorage = storage.array(forKey: storageKey) as? [[String:String]] ?? []
+        
         for contact in contactsFromStorage {
             guard let title = contact[ContactKey.title.rawValue],
                     let phone = contact[ContactKey.phone.rawValue] else {                continue
-                
             }
+            
             resultContacts.append(Contact(title: title, phone: phone))
             
         }
@@ -53,7 +54,7 @@ class ContactStorage: ContactStorageProtocol  {
         }
     
     func save(contacts: [ContactProtocol]) {
-            var arrayForStorage: [[String:String]] = []
+            var arrayForStorage: [[String:String]] = []//пустой словарь
             contacts.forEach { contact in
                 var newElementForStorage: Dictionary<String,String> = [:]
                 newElementForStorage[ContactKey.title.rawValue] = contact.title
