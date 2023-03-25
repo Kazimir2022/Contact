@@ -53,14 +53,14 @@ class ContactStorage: ContactStorageProtocol  {
         return resultContacts
         }
     
-    func save(contacts: [ContactProtocol]) {
-            var arrayForStorage: [[String:String]] = []//пустой словарь
-            contacts.forEach { contact in
-                var newElementForStorage: Dictionary<String,String> = [:]
-                newElementForStorage[ContactKey.title.rawValue] = contact.title
+    func save(contacts: [ContactProtocol]) {// получаем массив экземпляров из вьюконтроллера
+            var arrayForStorage: [[String:String]] = []//пустой массив  словарей
+        contacts.forEach { contact in // перебираем каждый элемент полученного массива
+            var newElementForStorage: Dictionary<String,String> = [:]// и создаем столько же  пустых словарей
+            newElementForStorage[ContactKey.title.rawValue] = contact.title // этому пустому словарю задаем ключ в виде строки из перечисления, и присваиваем значение в виде строки из нашего экземпляра обекта который прилетел из вьюконтролера
                 newElementForStorage[ContactKey.phone.rawValue] = contact.phone
-                arrayForStorage.append(newElementForStorage)
+            arrayForStorage.append(newElementForStorage)// и каждый словарь добавляем в массив словарей
             }
-            storage.set(arrayForStorage, forKey: storageKey)
+        storage.set(arrayForStorage, forKey: storageKey) // записываем наш массив словарей в UserDefaults.standard
         }
     }
