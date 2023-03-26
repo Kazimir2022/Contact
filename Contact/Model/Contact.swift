@@ -39,18 +39,23 @@ class ContactStorage: ContactStorageProtocol  {
         case phone    }
     
     func load() -> [ContactProtocol] {
-        var resultContacts: [ContactProtocol] = []
+        var resultContacts: [ContactProtocol] = []//
+        // получаем значение типа [[String:String]] т.к. в массиве хранится [[Any:Any]]
         let contactsFromStorage = storage.array(forKey: storageKey) as? [[String:String]] ?? []
         
-        for contact in contactsFromStorage {
-            guard let title = contact[ContactKey.title.rawValue],
-                    let phone = contact[ContactKey.phone.rawValue] else {                continue
+       /// преобразуется к массиву контактов [Contacts]
+    
+        
+        for contact in contactsFromStorage {//[string:string]
+            guard let title = contact[ContactKey.title.rawValue],// получаем значения каждого словаря
+                    let phone = contact[ContactKey.phone.rawValue] else {
+                continue// иначе пропускаем итерацию
             }
             
-            resultContacts.append(Contact(title: title, phone: phone))
+            resultContacts.append(Contact(title: title, phone: phone))//добаляем значенения во вновь созданный массив контактов
             
         }
-        return resultContacts
+        return resultContacts // возвращаем 
         }
     
     func save(contacts: [ContactProtocol]) {// получаем массив экземпляров из вьюконтроллера

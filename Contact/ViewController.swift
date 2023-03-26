@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         loadContacts()
     }
     private func loadContacts() {
-        contacts = storage.load()
+        contacts = storage.load() // загрузка контактов из хранилища
         
     }
     
